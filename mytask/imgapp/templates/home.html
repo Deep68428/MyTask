@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous" />
+</head>
+
+<body>
+    <form class="mt-4" method="get" action="{% url 'home' %}">
+        <label for="searchImage">Search Image:</label>
+        <input type="text" id="searchImage" name="searchImage" value="{{ searchTerm }}">
+        <button type="submit">Search</button>
+    </form>
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+        {% for img in images %}
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h3>{{ img.imagename }}</h3>
+                </div>
+                <img class="card-img-top" src="{{img.image.url}}" alt="{{ img.imagename }}">
+
+            </div>
+            {% endfor %}
+        </div>
+</body>
+
+</html>
